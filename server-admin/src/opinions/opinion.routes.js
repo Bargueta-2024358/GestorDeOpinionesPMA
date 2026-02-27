@@ -1,4 +1,8 @@
+'use strict';
+
 import { Router } from 'express';
+// Importamos el router de comentarios para anidarlo
+import commentRoutes from '../comments/comment.routes.js'; 
 import {
   getOpinions,
   getOpinionById,
@@ -15,11 +19,11 @@ import { validateJWT } from '../../middlewares/validate-JWT.js';
 
 const router = Router();
 
-// públicas
+router.use('/:opinionId/comments', commentRoutes);
+
 router.get('/', getOpinions);
 router.get('/:id', validateGetOpinionById, getOpinionById);
 
-// autenticadas
 router.post('/', validateJWT, validateCreateOpinion, createOpinion);
 router.put('/:id', validateJWT, validateUpdateOpinion, updateOpinion);
 router.delete('/:id', validateJWT, validateGetOpinionById, deleteOpinion);

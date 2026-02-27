@@ -10,7 +10,7 @@ import { helmetOptions } from './helmet.configuration.js';
 import { requestLimit } from './rateLimit.configuration.js';
 import { errorHandler } from '../middlewares/handle-errors.js';
 import opinionRoutes from '../src/opinions/opinion.routes.js';
-// comentarios temporalmente removidos
+import commentRoutes from '../src/comments/comment.routes.js';
 
 const BASE_PATH = '/api/v1';
 
